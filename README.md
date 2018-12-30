@@ -10,3 +10,7 @@
   ```bash
     docker build --force-rm=true -t seansin/{nginx/php5-fpm/ubuntu}:latest .
   ```
+ **Related Works**
+ 
+ 상당부분 김충섭 개발자의 DockerFile을 참고하였음.
+  + [김충섭 개발자의 DockerFile](https://github.com/subicura/Dockerfiles)
