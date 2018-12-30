@@ -30,6 +30,12 @@ ADD php.ini /etc/php5/fpm/php.ini
 ADD php-fpm.conf /etc/php5/fpm/php-fpm.conf
 ADD www.conf /etc/php5/fpm/pool.d/www.conf
 
+# log configure
+RUN mkdir -p /var/log/php && \
+    touch /var/log/php/fpm-access.log && \
+    touch /var/log/php/fpm-error.log && \ 
+    chown -R www-data:www-data /var/log/php
+    
 # RUN
 COPY entrypoint.sh /usr/local/bin/
 RUN ln -s usr/local/bin/entrypoint.sh /entrypoint.sh
