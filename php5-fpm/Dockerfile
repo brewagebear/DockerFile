@@ -32,13 +32,16 @@ ADD www.conf /etc/php5/fpm/pool.d/www.conf
 
 # log configure
 RUN mkdir -p /var/log/php && \
-    touch /var/log/php/fpm-access.log && \
-    touch /var/log/php/fpm-error.log && \ 
-    chown -R www-data:www-data /var/log/php
+    touch /var/log/php/fpm-php.www.log && \
+    chown -R www-data:www-data /var/log/php/fpm-php.www.log
+
+RUN ln -sf /dev/stderr /var/log/php/fpm-php.www.log 
+
     
 # RUN
 COPY entrypoint.sh /usr/local/bin/
 RUN ln -s usr/local/bin/entrypoint.sh /entrypoint.sh
 ENTRYPOINT ["entrypoint.sh"]
 VOLUME /var/run/php
+
 CMD ["/usr/sbin/php-fpm5.6", "-F"]
