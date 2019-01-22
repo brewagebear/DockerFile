@@ -3,8 +3,9 @@ FROM seansin/ubuntu:16.04
 MAINTAINER seansin <seansin@chungbuk.ac.kr>
 
 # troubleshoting
-RUN apt-get -qq -y install aptitude software-properties-common 
-RUN aptitude purge `dpkg -l | grep php| awk '{print $2}' |tr "\n" " "` 
+RUN apt-get update && \ 
+    apt-get -qq -y install aptitude software-properties-common 
+RUN aptitude purge `dpkg -l | grep php| awk '{print $3}' |tr "\n" " "` 
 RUN add-apt-repository ppa:ondrej/php
 RUN apt-get update
 
@@ -26,9 +27,9 @@ RUN apt-get -qq -y --purge remove build-essential wget && \
     rm -rf /tmp/src
 
 # add config
-ADD php.ini /etc/php5/fpm/php.ini
-ADD php-fpm.conf /etc/php5/fpm/php-fpm.conf
-ADD www.conf /etc/php5/fpm/pool.d/www.conf
+ADD php.ini /etc/php/5.6/fpm/php.ini
+ADD php-fpm.conf /etc/php/5.6/fpm/php-fpm.conf
+ADD www.conf /etc/php/5.6/fpm/pool.d/www.conf
 
 # log configure
 RUN mkdir -p /var/log/php && \
