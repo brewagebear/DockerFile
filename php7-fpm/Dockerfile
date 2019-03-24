@@ -3,7 +3,7 @@ FROM seansin/ubuntu:16.04
 MAINTAINER seansin <seansin@chungbuk.ac.kr>
 
 # troubleshoting
-RUN apt-get update && \ 
+RUN apt-get update --fix-missing && \ 
     apt-get -qq -y install aptitude software-properties-common 
 RUN aptitude purge `dpkg -l | grep php| awk '{print $3}' |tr "\n" " "` 
 RUN add-apt-repository ppa:ondrej/php
