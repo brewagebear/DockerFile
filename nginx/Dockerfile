@@ -1,4 +1,4 @@
-FROM seansin/ubuntu:16.04
+FROM seansin/ubuntu:latest
 
 MAINTAINER seansin <seansin@chungbuk.ac.kr>
 
