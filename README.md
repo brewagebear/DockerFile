@@ -8,7 +8,7 @@
  **사용법**
   + git clone 후 빌드할 이미지가 있는 폴더로 이동. (ex cd nginx)
   ```bash
-    docker build --force-rm=true -t seansin/{nginx/php5-fpm/ubuntu}:latest .
+    docker build --force-rm=true -t seansin/{nginx/php5-fpm/php7-fpm/ubuntu}:latest .
   ```
  **Related Works**
  
